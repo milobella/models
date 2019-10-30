@@ -167,6 +167,54 @@
     ]
   },
   {
+    "text": "vide ma liste",
+    "categories": [
+      "EMPTY_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "supprime ma liste",
+    "categories": [
+      "EMPTY_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "supprime toute ma liste",
+    "categories": [
+      "EMPTY_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "qu'est-ce que j'ai sur ma liste",
+    "categories": [
+      "LIST_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "il y a quoi sur ma liste",
+    "categories": [
+      "LIST_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "qu'est-ce qu'il y a dans ma liste",
+    "categories": [
+      "LIST_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "combien il y a d'éléments dans ma liste",
+    "categories": [
+      "COUNT_LIST_ITEMS"
+    ]
+  },
+  {
+    "text": "compte les éléments de ma liste",
+    "categories": [
+      "COUNT_LIST_ITEMS"
+    ]
+  },
+  {
     "text": "mets un minuteur de 10 minutes",
     "categories": [
       "SET_TIMER"

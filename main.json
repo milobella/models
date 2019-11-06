@@ -167,6 +167,32 @@
     ]
   },
   {
+    "text": "je veux ajouter des cornichons à la liste de courses",
+    "categories": [
+      "ADD_TO_LIST"
+    ],
+    "entities": [
+      {
+        "start": 20,
+        "end": 30,
+        "name": "SHOPITEM"
+      }
+    ]
+  },
+  {
+    "text": "ajouter du sucre sur la liste",
+    "categories": [
+      "ADD_TO_LIST"
+    ],
+    "entities": [
+      {
+        "start": 11,
+        "end": 16,
+        "name": "SHOPITEM"
+      }
+    ]
+  },
+  {
     "text": "mets un minuteur de 10 minutes",
     "categories": [
       "SET_TIMER"

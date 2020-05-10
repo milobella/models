@@ -2,7 +2,7 @@
 
 MODEL_NAME="default"
 MODEL_FILE="main.json"
-CEREBRO_URL="https://milobella.com/cerebro"
+CEREBRO_URL="http://192.168.1.16:9444"
 
 echo "Checking cerebro status..."
 echo " ==> curl --write-out %{http_code} --silent --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train"

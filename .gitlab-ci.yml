@@ -1,7 +1,0 @@
-image: everpeace/curl-jq
-
-Deploy:
-  stage: deploy
-  script: [./deploy.sh]
-  tags: [docker,milobella]
-  only: [master]

@@ -1,0 +1,44 @@
+[
+  {
+    "text": "quelle heure il est",
+    "categories": [
+      "GET_TIME"
+    ],
+    "entities": []
+  },
+  {
+    "text": "il est quelle heure",
+    "categories": [
+      "GET_TIME"
+    ],
+    "entities": []
+  },
+  {
+    "text": "dis-moi l'heure",
+    "categories": [
+      "GET_TIME"
+    ],
+    "entities": []
+  },
+  {
+    "text": "j'ai besoin de conna\u00eetre l'heure",
+    "categories": [
+      "GET_TIME"
+    ],
+    "entities": []
+  },
+  {
+    "text": "je veux écouter Mickael Jackson",
+    "categories": [
+      "PLAY_MUSIC"
+    ],
+    "entities": [
+      {
+        "start": 12,
+        "end": 24,
+        "name": "artist",
+        "value": "Mickael Jackson"
+      }
+    ]
+  }
+]

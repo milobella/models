@@ -1,0 +1,4 @@
+intents:
+  - "GET_TIME"
+  - "HELLO"
+  - "LAST_SHOWTIME"

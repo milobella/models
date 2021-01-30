@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 MODEL_NAME="default"
-MODEL_FILE="main.json"
-CEREBRO_URL="http://192.168.1.16:9444"
+MODEL_FILE="output/${MODEL_NAME}.json"
+CEREBRO_URL="http://localhost:9444"
 
 echo "Checking cerebro status..."
-echo " ==> curl --write-out %{http_code} --silent --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train"
-response=$(curl --write-out %{http_code} --silent --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train)
+echo " ==> curl --write-out \"%{http_code}\" --silent --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train"
+response=$(curl --write-out "%{http_code}" --silent --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train)
 
-if [ $response = "200" ]
+if [ "$response" = "200" ]
 then
     echo "Cerebro is available !"
 else
@@ -28,17 +28,18 @@ echo "Model train triggered !"
 
 
 attempt_counter=0
+sleep_duration=10 # in min
 max_attempts=18 # Wait for 5 min max
 
-until [ $(curl --write-out %{http_code} --silent --fail --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train) = "200" ]; do
+until [ "$(curl --write-out "%{http_code}" --silent --fail --output /dev/null ${CEREBRO_URL}/models/${MODEL_NAME}/train)" = "200" ]; do
     if [ ${attempt_counter} -eq ${max_attempts} ];then
       echo "Max attempts reached, check the cerebro instance."
       exit 1
     fi
 
     printf '.'
-    attempt_counter=$(($attempt_counter+1))
-    sleep 10
+    attempt_counter=$((attempt_counter+1))
+    sleep ${sleep_duration}
 done
 
 echo "Model has been successfully deployed !"

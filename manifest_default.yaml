@@ -1,4 +1,8 @@
 intents:
   - "GET_TIME"
+  - "GET_WEATHER"
   - "HELLO"
   - "LAST_SHOWTIME"
+  - "COUNT_LIST_ITEMS"
+  - "EMPTY_LIST_ITEMS"
+  - "LIST_LIST_ITEMS"

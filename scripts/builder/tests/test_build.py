@@ -16,7 +16,6 @@ class TestBuild(unittest.TestCase):
                 open(dir_path + '/data/out/model1.json', 'r') as expected_output:
             self.assertEqual(json.load(expected_output), json.load(actual_output))
 
-    @unittest.skip("Entities parsing not supported yet: https://github.com/milobella/models/issues/5")
     def test_build_model2(self):
         with open(dir_path + '/data/in/manifest2.yaml', 'r') as manifest, \
                 open(dir_path + '/data/tmp/model.json', 'w') as actual_output:

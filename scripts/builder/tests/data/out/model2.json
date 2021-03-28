@@ -34,10 +34,9 @@
     ],
     "entities": [
       {
-        "start": 12,
-        "end": 24,
-        "name": "artist",
-        "value": "Mickael Jackson"
+        "start": 16,
+        "end": 31,
+        "name": "artist"
       }
     ]
   }

@@ -4,6 +4,8 @@ from pathlib import Path
 from typing import List
 import yaml
 import json
+import re
+from xml.dom import minidom
 
 
 class Manifest:
@@ -41,10 +43,10 @@ class FilesReader:
 
     def __init__(self, data_folder: str, manifest_file: str):
         self._data_folder = data_folder
-        self._manifest = FilesReader.read_manifest(manifest_file)
+        self._manifest = FilesReader._read_manifest(manifest_file)
 
     @staticmethod
-    def read_manifest(file) -> Manifest:
+    def _read_manifest(file) -> Manifest:
         """
         Load manifest file
         :param file:
@@ -53,18 +55,39 @@ class FilesReader:
         document = yaml.load(file, Loader=yaml.FullLoader)
         return Manifest(document["intents"])
 
+    @staticmethod
+    def _read_sentences(f) -> List[str]:
+        # return yaml.load(f, Loader=yaml.FullLoader)
+        lines = f.readlines()
+        length = len(lines)
+        result = []
+        current_text = ''
+        for i in range(length):
+            line = lines[i]
+            is_text = not re.match(r'\s+', line)
+            if is_text:
+                current_text = current_text.replace('\n', ' ') + line
+            else:
+                result.append(current_text.replace('\n', ''))
+                current_text = ''
+
+        if len(current_text) > 0:
+            result.append(current_text.replace('\n', ''))
+
+        return result
+
     def _build_path(self, file) -> str:
         return Path(self._data_folder) / file.name
 
     def read_intent(self, file) -> HumanIntent:
         with open(self._build_path(file)) as f:
-            sentences = yaml.load(f, Loader=yaml.FullLoader)
+            sentences = self._read_sentences(f)
             return HumanIntent(
                 name=os.path.splitext(file.name)[0],
                 sentences=sentences
             )
 
-    def read_intents(self):
+    def read_intents(self) -> List[HumanIntent]:
         intents = []
         for f in os.scandir(self._data_folder):
             intent = self.read_intent(f)
@@ -72,7 +95,7 @@ class FilesReader:
                 intents.append(intent)
             else:
                 del intent
-        return intents
+        return sorted(intents, key=lambda i: i.name)
 
 
 class CerebroEntity:
@@ -110,16 +133,40 @@ class CerebroDataModel(List[CerebroDataModelEntry]):
     pass
 
 
+def get_text(nodelist):
+    rc = []
+    for node in nodelist:
+        if node.nodeType == node.TEXT_NODE:
+            rc.append(node.data)
+    return ''.join(rc)
+
+
 class CerebroFactory:
     def __init__(self):
         pass
 
     @staticmethod
+    def parse_sentence(sentence: str) -> (str, List[CerebroEntity]):
+        xmldoc = minidom.parseString("<sentence>" + sentence + "</sentence>")
+        s = xmldoc.getElementsByTagName('sentence')[0]
+        new_sentence = sentence.replace("</entity>", "")
+        new_sentence = re.sub(r"<entity.*>", '', new_sentence)
+        entities = []
+        for entity in s.getElementsByTagName('entity'):
+            kind = entity.getAttribute('kind')
+            value = get_text(entity.childNodes)
+            start = new_sentence.index(value)
+            end = start + len(value)
+            entities.append(CerebroEntity(start, end, kind))
+        return new_sentence, entities
+
+    @staticmethod
     def build_entry(name: str, sentence: str) -> CerebroDataModelEntry:
+        sentence, entities = CerebroFactory.parse_sentence(sentence)
         return CerebroDataModelEntry(
             text=sentence,
             categories=[name],
-            entities=[]  # TODO: Read entities from xml
+            entities=entities
         )
 
     @staticmethod

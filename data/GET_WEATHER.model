@@ -10,3 +10,10 @@ peux-tu mettre la météo
 
 la météo d'aujourd'hui
 
+météo à <entity kind="location">Cannes</entity>
+
+je veux connaître la météo de demain
+
+météo en <entity kind="location">France</entity>
+
+et à <entity kind="location">Nice</entity> il fait quel temps

@@ -7,3 +7,13 @@ ajoute <entity kind="SHOPITEM">du beurre de cacahuètes</entity> à ma liste de 
 je veux ajouter <entity kind="SHOPITEM">des cornichons</entity> à la liste de courses
 
 ajouter <entity kind="SHOPITEM">du sucre</entity> sur la liste
+
+mets <entity kind="SHOPITEM">des haricots</entity> sur ma liste
+
+mets <entity kind="SHOPITEM">du pain</entity> sur la liste de courses
+
+rajoute <entity kind="SHOPITEM">une boîte de sardines</entity> dans la liste
+
+je veux mettre <entity kind="SHOPITEM">un paquet de céréales</entity> dans ma liste
+
+il me manque <entity kind="SHOPITEM">du sel</entity> mets-en sur la liste

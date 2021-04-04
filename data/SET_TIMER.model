@@ -2,3 +2,5 @@ mets un minuteur de <entity kind="duration">10 minutes</entity>
 
 mets un timer de <entity kind="duration">15 minutes</entity>
 
+lance un minuteur de <entity kind="duration">3 minutes</entity>
+

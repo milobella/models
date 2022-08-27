@@ -1,0 +1,7 @@
+je veux regarder <entity kind="title">star wars</entity> à la télé
+
+mets <entity kind="title">harry potter</entity>
+
+mets un film sur la télé du <entity kind="instrument">salon</entity>
+
+je veux regarder <entity kind="title">the lego movie 2</entity> dans la <entity kind="instrument">chambre</entity>

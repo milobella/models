@@ -150,7 +150,7 @@ class CerebroFactory:
         xmldoc = minidom.parseString("<sentence>" + sentence + "</sentence>")
         s = xmldoc.getElementsByTagName('sentence')[0]
         new_sentence = sentence.replace("</entity>", "")
-        new_sentence = re.sub(r"<entity.*>", '', new_sentence)
+        new_sentence = re.sub(r"<entity [\s\S]*?>", '', new_sentence)
         entities = []
         for entity in s.getElementsByTagName('entity'):
             kind = entity.getAttribute('kind')

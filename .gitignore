@@ -2,3 +2,4 @@
 output
 venv
 scripts/builder/tests/data/tmp
+*pyc

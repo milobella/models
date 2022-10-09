@@ -28,7 +28,7 @@
     "entities": []
   },
   {
-    "text": "je veux écouter Mickael Jackson",
+    "text": "je veux écouter Mickael Jackson au salon",
     "categories": [
       "PLAY_MUSIC"
     ],
@@ -37,6 +37,11 @@
         "start": 16,
         "end": 31,
         "name": "artist"
+      },
+      {
+        "start": 35,
+        "end": 40,
+        "name": "room"
       }
     ]
   }
